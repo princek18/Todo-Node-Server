@@ -36,7 +36,7 @@ app.get("/todos", (req, res) => {
 });
 
 app.get("/donetodos", (req, res) => {
-  const todos = fs.readFileSync("donetodos.json", "utf-8");
+  const todos = fs.readFileSync("doneTodos.json", "utf-8");
   res.status(200);
   res.send(todos);
 });
