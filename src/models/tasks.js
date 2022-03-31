@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const Task = mongoose.model('tasks', {
+const taskSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -27,5 +27,19 @@ export const Task = mongoose.model('tasks', {
         type: Boolean,
         required: true,
         default: false
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
 })
+
+taskSchema.methods.toJSON = function(){
+    const task = this;
+    const taskObject = task.toObject();
+    delete taskObject.userId;
+
+    return taskObject;
+}
+
+export const Task = mongoose.model('tasks', taskSchema);
