@@ -9,7 +9,7 @@ userRouter.post('/signup', async (req, res) => {
     const user = new Users(req.body);
     try{
         await user.save();
-        res.send("User created Successfully!")
+        res.send("User Successfully Created!")
     }catch(e){
         res.status(400).send(e.message)
     }
