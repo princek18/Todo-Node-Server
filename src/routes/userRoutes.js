@@ -1,4 +1,3 @@
-import bcryptjs from "bcryptjs";
 import express from "express";
 import { Users } from "../models/users.js";
 import {authUser, getAuthToken} from '../utils/utils.js';

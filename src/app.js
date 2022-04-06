@@ -21,6 +21,6 @@ app.use(taskRouter);
 
 app.use(userRouter);
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log("Server up on port 4000");
+app.listen(process.env.PORT, () => {
+  console.log(`Server up on port ${process.env.PORT}`);
 });

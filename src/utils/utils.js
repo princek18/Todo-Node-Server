@@ -15,14 +15,14 @@ export const authUser = async (email, password) => {
 };
 
 export const getAuthToken = async (user) => {
-  const token = jsonwebtoken.sign({ _id: user._id }, "velociraptor", {expiresIn: "2 hours"});
+  const token = jsonwebtoken.sign({ _id: user._id }, process.env.JWT_SECRET, {expiresIn: "2 hours"});
   return token;
 };
 
 export const authToken = async (req, res, next) => {
   try {
     const token = req.header("authToken").replace("ToAp ", "");
-    const decoded = jsonwebtoken.verify(token, "velociraptor");
+    const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET);
     const user = await Users.findOne({ _id: decoded._id });
 
     if (!user) {
